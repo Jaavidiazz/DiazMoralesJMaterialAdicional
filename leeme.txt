@@ -1,0 +1,77 @@
+MATERIAL ADICIONAL DEL TFG
+Grado en Ingeniería Informática en Sistemas de Información - Universidad Pablo de Olavide
+Curso 2025/2026 - Convocatoria Extraordinaria
+
+Autor: Javier Diaz Morales
+Título del TFG: Sistema inteligente para el diagnóstico del cáncer de mama mediante la integración de modelos de aprendizaje automático
+Código del TFG: 25-26-A04²
+
+Este archivo contiene el código fuente de los dos componentes del proyecto:
+el modelo de detección/clasificación de cáncer de mama y la aplicación web
+que lo integra.
+
+
+SUBESTRUCTURA DE CARPETAS
+========================
+
+breast_cancer_detection/
+    Modelo de visión por computador. Entrenamiento y evaluación de un
+    detector Faster R-CNN (Detectron2) y de un clasificador de masas
+    (ResNet-18) sobre mamografías de los conjuntos INbreast, CBIS-DDSM y
+    MIAS.
+      - detectron.py .............. entrenamiento, inferencia y evaluación del detector
+      - classification_model.py ... entrenamiento del clasificador y API local
+      - convert_dataset.py ........ conversión de DICOM/XML a formato COCO/YOLO
+      - conteo.py, filters.py, offline_augmentation.py, utils.py, visualizer.py,
+        xai.py, xai_detectron.py, matrizConfusion.py ... utilidades de apoyo
+      - train.json / val.json / test.json ... anotaciones COCO de cada partición
+      - requirements.txt .......... dependencias (versiones fijadas)
+      - README.md ................. documentación del componente
+    Los conjuntos de imágenes y las salidas de entrenamiento de este
+    componente (breast_cancer_detection/output/) no se incluyen por tamaño.
+
+webApp/
+    Aplicación web que sirve el modelo a los facultativos.
+      backend/   API REST en FastAPI. Carga el modelo Detectron2, genera
+                 predicciones, overlays y mapas de calor (Grad-CAM), y
+                 redacta informes con Gemini.
+        - core/ ........ configuración, seguridad/propiedad de casos,
+                         servicios de modelo, informe y PDF, auditoría
+        - routers/ ..... endpoints por área (casos, usuarios, dataset, modelo)
+        - tests/ ....... pruebas con pytest
+        - model/ ....... configuración del modelo (dataset.yaml,
+                         detectron.cfg.yaml) y los pesos entrenados
+                         (model_final.pth, ~315 MB) que carga el backend
+                         al arrancar
+      frontend/  Interfaz en Next.js 16 (App Router) + Tailwind. Paneles de
+                 facultativo y de administración, autenticación con Supabase.
+        - app/ ......... rutas y páginas
+        - components/ .. componentes de interfaz reutilizables
+        - lib/ ......... utilidades y cliente de API/Supabase
+      supabase/migrations/ ... esquema SQL y políticas RLS de la base de datos
+      Dockerfile, docker-compose.yml, Caddyfile, DEPLOY.md ... despliegue en VPS
+
+.github/workflows/ci.yml
+    Integración continua: lint, pruebas y build de frontend y backend.
+
+.gitignore
+    Exclusiones (conjuntos de datos, pesos del modelo, dependencias,
+    ficheros generados).
+
+
+NOTAS
+=====
+- Pesos del modelo: este archivo incluye webApp/backend/model/model_final.pth
+  (~315 MB), que es el que necesita la aplicación web para funcionar. No se
+  guarda en ninguna base de datos; el backend lo carga desde disco al
+  arrancar. En el repositorio público de GitHub este fichero no está (supera
+  el límite de 100 MB de GitHub); allí se distribuye como asset de una
+  Release y hay que colocarlo en webApp/backend/model/.
+- No se incluyen: los conjuntos de imágenes (INbreast, CBIS-DDSM, MIAS) por
+  tamaño y condiciones de uso, ni las salidas de entrenamiento del detector
+  (breast_cancer_detection/output/).
+- Variables de entorno: cada componente incluye un fichero .env.example con
+  las claves necesarias (Supabase, Gemini). Los valores reales no se
+  incluyen.
+- La carpeta contiene también un repositorio git (.git/) con el historial
+  del código; no forma parte del material a evaluar.

@@ -1,0 +1,11 @@
+{
+	email {$ACME_EMAIL}
+}
+
+{$DOMAIN}, www.{$DOMAIN} {
+	reverse_proxy frontend:3000
+}
+
+api.{$DOMAIN} {
+	reverse_proxy backend:8000
+}

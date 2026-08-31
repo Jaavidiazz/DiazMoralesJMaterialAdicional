@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+tests/
+.env
+.env.*
+uploads/
+tmp/
+model/*.pth
+model/*.pt
+node_modules/
+package.json
+package-lock.json
+.git

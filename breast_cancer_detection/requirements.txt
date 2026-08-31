@@ -1,0 +1,21 @@
+torch==2.9.0
+torchvision==0.24.0
+opencv-python==4.12.0.88
+pillow==12.0.0
+xmltodict==1.0.2
+pydicom==3.0.1
+pandas==2.3.3
+numpy==2.2.6
+cloudpickle==3.1.2
+matplotlib==3.10.7
+tqdm==4.67.1
+PyYAML==6.0.3
+albumentations==2.0.8
+prompt_toolkit==3.0.52
+scikit-learn==1.7.2
+flask==3.0.0
+flask-cors==6.0.1
+waitress==3.0.2
+torchcam==0.3.1
+pytorch-lightning==2.5.5
+detectron2 @ git+https://github.com/facebookresearch/detectron2.git@a9c0821a12ad353fb2a96f019515990d5460c5ac

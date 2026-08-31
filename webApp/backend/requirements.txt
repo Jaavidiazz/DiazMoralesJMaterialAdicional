@@ -1,0 +1,17 @@
+fastapi==0.121.2
+uvicorn==0.38.0
+python-dotenv==1.2.1
+python-multipart==0.0.20
+pydantic==2.12.3
+supabase==2.24.0
+google-genai==1.70.0
+slowapi==0.1.9
+reportlab==5.0.0
+
+torch==2.9.0
+torchvision==0.24.0
+opencv-python==4.12.0.88
+pillow==12.0.0
+numpy==2.2.6
+PyYAML==6.0.3
+detectron2 @ git+https://github.com/facebookresearch/detectron2.git@a9c0821a12ad353fb2a96f019515990d5460c5ac

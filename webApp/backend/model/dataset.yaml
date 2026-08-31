@@ -1,0 +1,7 @@
+names:
+- mass_low
+- mass_high
+path: /Volumes/DiscoExterno/breast_cancer_detection
+test: test/images
+train: train/images
+val: val/images

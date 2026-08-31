@@ -1,0 +1,26 @@
+.viewer {
+  position: relative;
+  width: 100%;
+  max-width: 900px;      /* ajusta según tu diseño */
+  height: 600px;         /* alto de la “ventana” */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  overflow: hidden;      /* clave para recortar al hacer zoom */
+  background: #000;
+  cursor: grab;
+}
+
+.viewer:active {
+  cursor: grabbing;
+}
+
+.image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scale(1);
+  user-select: none;
+  -webkit-user-drag: none;
+  max-width: none;       /* importante para que el scale funcione bien */
+}

@@ -1,0 +1,48 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+*.log
+npm-debug.log*
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+.claude/settings.local.json
+
+# Model weights / checkpoints
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.onnx
+
+# Datasets and generated outputs (too large for git)
+breast_cancer_detection/datasets/
+breast_cancer_detection/train/
+breast_cancer_detection/test/
+breast_cancer_detection/val/
+breast_cancer_detection/output/
+breast_cancer_detection/classification_output/
+
+# Runtime uploads / temp files (webApp)
+webApp/backend/uploads/
+webApp/backend/tmp/
