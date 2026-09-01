@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
-const publicRoutes = ["/auth/login", "/auth/register"];
+const publicRoutes = ["/auth/login"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -42,7 +42,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Si ya está logueado, que no vuelva a login/register
+  // Si ya está logueado, que no vuelva al login
   if (user && isPublicRoute) {
     const { data: profile } = await supabase
       .from("profiles")
