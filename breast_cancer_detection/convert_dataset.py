@@ -47,7 +47,7 @@ split_mode = True
 split_ratio = [0.8, 0.1, 0.1]
 split_seed = 42  # semilla para que el split sea reproducible
 split_not_in_mask_mode = True  # Must be set to true for to_3d_nrrd.py to work properly
-offline_augmentation_enabled = True  # Toggle for offline augmentation
+offline_augmentation_enabled = False  # sin aumento de datos offline; el aumento se aplica en línea durante el entrenamiento
 
 # --- Input paths --- #
 # INBreast Dataset

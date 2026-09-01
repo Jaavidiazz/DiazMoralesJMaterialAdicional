@@ -306,8 +306,8 @@ class AugmentedTrainer(DefaultTrainer):
     flip horizontal, ya presentes por defecto): brillo y contraste
     aleatorios. Con un dataset de ~1400 imágenes reales, entrenar muchas
     iteraciones sin esta variedad hace que el modelo memorice las imágenes
-    en vez de generalizar (ver CHANGELOG.md, sobreajuste tras iter ~2000 en
-    el entrenamiento sin augmentation)."""
+    en vez de generalizar: en pruebas sin esta variedad se observó sobreajuste
+    a partir de la iteración ~2000."""
 
     @classmethod
     def build_train_loader(cls, cfg):
